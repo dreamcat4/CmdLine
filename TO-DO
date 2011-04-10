@@ -1,0 +1,14 @@
+List of things still to do for CmdLine/cmdparse:
+-------------------------------------------------------------------------------
+
+- Get cmdparse(1) to work with the 'es' shell.
+
+- Implement vms_style parsing
+  For this - I will need to add a "last_list_matched" to the cmdline-object
+  to handle stuff like "(a,b/c,d)".  Also, what am I going to do about
+  looking at the original command-line (with lib$get_foreign)? I dont 
+  think it is reasonable to always compare the argv[] of a CmdArgvIter
+  to the command-line. Perhaps VMS should have a parse(void) member function
+  of a CmdLine that does nothing for Unix (or perhaps uses <execargs.h>).
+
+- Implement ibm_style parsing
