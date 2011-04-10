@@ -22,7 +22,7 @@ OS=unix
 # Define some OS dependent stuff for file extensions
 #
    ## C++ file extension
-CEXT=.c
+CEXT=.cpp
 
    ## object file extension
 OBJEXT=.o
