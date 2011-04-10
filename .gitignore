@@ -1,0 +1,4 @@
+*.o
+*.a
+src/cmd/cmdparse
+src/lib/cmdtest

@@ -20,12 +20,14 @@
 //    - Added exit_handler() and quit() member-functions to CmdLine
 //-^^---------------------------------------------------------------------
 
-#include <iostream.h>
-#include <strstream.h>
-#include <fstream.h>
+#include <iostream>
+#include <backward/strstream>
+#include <fstream>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+
+using namespace std;
 
 extern "C" {
   int  isatty(int fd);
@@ -278,11 +280,8 @@ unsigned
 CmdLine::prompt_user(CmdArg * cmdarg)
 {
    // dont prompt if cin or cerr is not interactive
-   int fd = ((filebuf *)(cin.rdbuf()))->fd();
-   if (! ::isatty(fd))  return  ARG_MISSING ;
-
-   fd = ((filebuf *)(cerr.rdbuf()))->fd();
-   if (! ::isatty(fd))  return  ARG_MISSING ;
+   if (! ::isatty(fileno(stdin)))  return  ARG_MISSING ;
+   if (! ::isatty(fileno(stderr)))  return  ARG_MISSING ;
 
    // if we have a list, need to prompt repeatedly
    if (cmdarg->syntax() & CmdArg::isLIST) {

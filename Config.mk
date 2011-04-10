@@ -149,7 +149,7 @@ LIBNAME=cmdline
 # Define C++ compilation stuff
 #
    ## name of C++ compiler
-CC=CC
+   CC=c++
 
    ## option to specify other include directories to search
 INC=-I
@@ -184,7 +184,8 @@ FLAG=$(OPT)
 # FLAG=$(DBG)
 TESTDEFS=
 USRDEFS=$(DEF)DEBUG_CMDLINE
-OPTIONS=
+# When we #include <backward/strstream>, could be replaced with #include <stringstream>
+OPTIONS=-Wno-deprecated
 
 #------------------------------------------------------------------------------
 # Define the macro to pass to recursive makes
@@ -197,5 +198,5 @@ RECUR= "FLAG=$(FLAG)" \
 #------------------------------------------------------------------------------
 # Define the command for recursive makes
 #
-BUILD=$(MAKE) -$(MAKEFLAGS) $(RECUR)
+BUILD=$(MAKE) - $(MAKEFLAGS) $(RECUR)
 

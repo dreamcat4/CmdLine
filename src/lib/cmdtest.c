@@ -12,7 +12,7 @@
 //-^^---------------------------------------------------------------------
 
 #include <stdlib.h>
-#include <iostream.h>
+#include <iostream>
 #include <ctype.h>
 #include <cmdargs.h>
 
@@ -140,7 +140,7 @@ static CmdArgStrList   files("[files ...]", "files to process");
 static void
 print_args(void) {
    cout << "xflag=" << (xflag ? "ON" : "OFF") << endl ;
-   cout << "count=" << count << endl ;
+   cout << "count=" << ::count << endl ;
 
    unsigned  sflags = str.flags();
    if ((sflags & CmdArg::GIVEN) && (! (sflags & CmdArg::VALGIVEN))) {
@@ -160,14 +160,14 @@ print_args(void) {
    }
 
    unsigned  ngrps = grps.count();
-   for (i = 0; i < ngrps ; i++) {
+   for (int i = 0; i < ngrps ; i++) {
       cout << "groups[" << i << "]=\"" << grps[i] << "\"" << endl ;
    }
 
    cout << "name=\"" << name << "\"" << endl ;
 
    unsigned  nfiles = files.count();
-   for (i = 0; i < nfiles ; i++) {
+   for (int i = 0; i < nfiles ; i++) {
       cout << "files[" << i << "]=\"" << files[i] << "\"" << endl ;
    }
 }
@@ -194,7 +194,7 @@ main(int argc, char * argv[]) {
                 & debug,
                 & xflag,
                 & nxflag,
-                & count,
+                & ::count,
                 & delim,
                 & ext,
                 & code,
@@ -217,7 +217,7 @@ the CmdLine(3C++) class library."
    cout << "Test of " << CmdLine::ident() << endl ;
 
    xflag = 0;
-   count = 1;
+   ::count = 1;
    str = NULL;
    delim = '\t';
    name = NULL;
@@ -242,7 +242,7 @@ the CmdLine(3C++) class library."
       CmdStrTokIter  tok_iter(str);
 
       xflag = 0;
-      count = 1;
+      ::count = 1;
       str = NULL;
       delim = '\t';
       name = NULL;
@@ -257,7 +257,7 @@ the CmdLine(3C++) class library."
    // Parse arguments from a file
    if (parse_cin) {
       xflag = 0;
-      count = 1;
+      ::count = 1;
       str = NULL;
       delim = '\t';
       name = NULL;

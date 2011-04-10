@@ -15,7 +15,8 @@
 
 #include  "fsm.h"
 
-class  istream;
+using namespace std;
+
 class  ArgSyntax {
 public:
    ArgSyntax(void)

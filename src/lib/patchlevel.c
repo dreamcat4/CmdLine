@@ -21,6 +21,9 @@
 //
 //    01/11/94	Brad Appleton	<bradapp@enteract.com>
 //    - Modified for patch 4
+//
+//    10/04/11	Dreamcat4	<dreamcat4@gmail.com>
+//    - To fix various compiler errors and warnings
 //-^^---------------------------------------------------------------------
 
 #include "cmdline.h"

@@ -21,8 +21,9 @@
 #ifndef _usr_include_cmdline_h
 #define _usr_include_cmdline_h
 
-class  ostream ;
-class  istream ;
+#include <iostream>
+using namespace std;
+
 class  CmdLine ;
 class  CmdArgListIter ;
 class  CmdArgListList ;

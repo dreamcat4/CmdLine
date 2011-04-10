@@ -13,7 +13,7 @@
 //    - Added cmd_description field to CmdLine
 //-^^---------------------------------------------------------------------
 
-#include <iostream.h>
+#include <iostream>
 #include <stdlib.h>
 #include <string.h>
 

@@ -17,7 +17,7 @@
 //-^^---------------------------------------------------------------------
 
 #include <stdlib.h>
-#include <iostream.h>
+#include <iostream>
 #include <ctype.h>
 #include <string.h>
 

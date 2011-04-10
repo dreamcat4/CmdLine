@@ -17,6 +17,7 @@
 
 #include <cmdargs.h>
 
+using namespace std;
 
    // Exit values used
 enum  ExitValues {
@@ -43,7 +44,6 @@ public:
 } ;
 
 
-class  istream ;
 class  ArgSyntax ;
 class  UnixShell ;
 class  CmdParseCommand : public CmdLine {

@@ -25,7 +25,7 @@ GenericFifoList::~GenericFifoList(void) {
    while (nd) {
       GenericFifoListNode * to_delete = nd;
       nd = nd->next;
-      if (del_items)  delete  to_delete->contents;
+      if (del_items)  free(to_delete->contents);
       delete  to_delete;
    }
 }

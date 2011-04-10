@@ -13,7 +13,7 @@
 //    12/05/91 	Brad Appleton 	<bradapp@enteract.com> 	Created
 //-^^-----------------------------------------------------------------------
 
-#include <iostream.h>
+#include <iostream>
 #include <string.h>
 #include <ctype.h>
 
@@ -151,7 +151,7 @@ CmdLine::strindent(ostream    & os,
    os.setf(ios::left, ios::adjustfield);
    os.width(indent);
    os << ((title) ? title : "");
-   os.flags(save_flags);
+   os.flags((std::_Ios_Fmtflags)save_flags);
 
    if (text == NULL) {
       os << endl ;

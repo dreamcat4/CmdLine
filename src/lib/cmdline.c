@@ -21,7 +21,7 @@
 //-^^---------------------------------------------------------------------
 
 #include <stdlib.h>
-#include <iostream.h>
+#include <iostream>
 #include <stdarg.h>
 #include <string.h>
 #include <ctype.h>

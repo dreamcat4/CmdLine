@@ -21,8 +21,9 @@
 //    - Added ALLOW_PLUS to list of CmdLine configuration flags
 //-^^---------------------------------------------------------------------
 
-#include <iostream.h>
-#include <strstream.h>
+#include <iostream>
+#include <backward/strstream>
+
 #include <stdlib.h>
 #include <string.h>
 

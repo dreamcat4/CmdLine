@@ -9,7 +9,7 @@
 //-^^---------------------------------------------------------------------
 
 #include <new.h>
-#include <iostream.h>
+#include <iostream>
 #include <stdlib.h>
 
 #include "cmdparse.h"

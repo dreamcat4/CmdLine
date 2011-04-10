@@ -10,11 +10,13 @@
 //-^^---------------------------------------------------------------------
 
 #include <stdlib.h>
-#include <iostream.h>
+#include <iostream>
 #include <ctype.h>
 #include <string.h>
 
 #include "fsm.h"
+
+using namespace std;
 
    // define the characters that have a "special" meaning
 enum {

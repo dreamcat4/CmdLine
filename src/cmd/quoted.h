@@ -17,7 +17,8 @@
 #ifndef _quoted_h
 #define _quoted_h
 
-class  istream ;
+using namespace std;
+
 class  QuotedString {
 public:
       // constructors and destructors

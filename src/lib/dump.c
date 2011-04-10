@@ -18,7 +18,7 @@
 #include  "cmdline.h"
 
 #ifdef DEBUG_CMDLINE
-# include  <iostream.h>
+#include <iostream>
 # include  <string.h>
 
 # include  "arglist.h"

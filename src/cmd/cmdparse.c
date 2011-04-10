@@ -13,16 +13,18 @@
 //-^^---------------------------------------------------------------------
 
 #include <stdlib.h>
-#include <iostream.h>
-#include <fstream.h>
-#include <strstream.h>
+#include <iostream>
+#include <fstream>
+#include <backward/strstream>
 #include <string.h>
 #include <ctype.h>
 
-#include <argtypes.h>
+#include "argtypes.h"
 #include "cmdparse.h"
 #include "syntax.h"
 #include "quoted.h"
+
+using namespace std;
 
 enum { SUCCESS = 0, FAILURE = -1 } ;
 
@@ -145,8 +147,7 @@ CmdParseCommand::parse_declarations(void)
       // If no "input sources" were specified, try cin.
    if ((str == NULL)  &&  (varname == NULL)  &&  (filename == NULL)) {
       // Make sure cin is NOT interactive!
-      int fd = ((filebuf *)(cin.rdbuf()))->fd();
-      if (::isatty(fd)) {
+       if (::isatty(fileno(stdin))) {
          error() << "Can't read argument declarations from a terminal."
                  << endl ;
          return  -1;
