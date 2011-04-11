@@ -184,8 +184,7 @@ FLAG=$(OPT)
 # FLAG=$(DBG)
 TESTDEFS=
 USRDEFS=$(DEF)DEBUG_CMDLINE
-# When we #include <backward/strstream>, could be replaced with #include <stringstream>
-OPTIONS=-Wno-deprecated
+OPTIONS=
 
 #------------------------------------------------------------------------------
 # Define the macro to pass to recursive makes

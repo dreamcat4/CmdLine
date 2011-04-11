@@ -8,10 +8,7 @@
 //    05/03/92	Brad Appleton	<bradapp@enteract.com>	Created
 //-^^---------------------------------------------------------------------
 
-#include <new.h>
-#include <iostream>
 #include <stdlib.h>
-
 #include "cmdparse.h"
 
 //

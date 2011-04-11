@@ -21,7 +21,7 @@
 //-^^---------------------------------------------------------------------
 
 #include <iostream>
-#include <backward/strstream>
+#include <sstream>
 #include <fstream>
 #include <stdlib.h>
 #include <string.h>
@@ -288,17 +288,23 @@ CmdLine::prompt_user(CmdArg * cmdarg)
       cerr << "Enter one " << cmdarg->value_name() << " per line "
            << "(enter a blank-line to stop)." << endl ;
    }
-   char prompt[256], * buf = NULL;
-   ostrstream  oss(prompt, sizeof(prompt));
+
+   ostringstream oss;
    oss << "\rEnter " << cmdarg->value_name() << ": " << ends ;
+
+   const char * prompt = oss.str().c_str();
+   char * rdbuf = NULL;
+
    int  errs = 0, first = 1;
    do {  // need repeated prompting for a LIST
-      if (buf)  ::free(buf);
-      buf = ::readline(prompt) ;
-      if (buf == NULL)  return  ARG_MISSING ;
+
+      if (rdbuf)  ::free(rdbuf);
+      rdbuf = ::readline(prompt) ;
+
+      if (rdbuf == NULL)  return  ARG_MISSING ;
 
       // make sure we read something!
-      if (! *buf) {
+      if (! *rdbuf) {
          if (first) {
             error() << "error - no " << cmdarg->value_name()
                     << " given!" << endl ;
@@ -309,12 +315,12 @@ CmdLine::prompt_user(CmdArg * cmdarg)
 
 #ifdef GNU_READLINE
       // add this line to the history list
-      ::add_history(buf);
+      ::add_history(rdbuf);
 #endif
 
       // try to handle the value we read (remember - buf is temporary)
       if (! errs) {
-         const char * arg = buf;
+         const char * arg = rdbuf;
          unsigned  save_cmd_flags = cmd_flags;
          cmd_flags |= TEMP;
          errs = handle_arg(cmdarg, arg);
@@ -325,11 +331,11 @@ CmdLine::prompt_user(CmdArg * cmdarg)
       }
 
       first = 0;
-   } while (!errs && (cmdarg->syntax() & CmdArg::isLIST) &&  *buf);
+   } while (!errs && (cmdarg->syntax() & CmdArg::isLIST) &&  *rdbuf);
 
    if (! errs)  cmdarg->set(CmdArg::VALSEP);
 
-   if (buf)  ::free(buf);
+   if (rdbuf)  ::free(rdbuf);
    return  (errs) ? ARG_MISSING : NO_ERROR ;
 }
 

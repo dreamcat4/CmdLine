@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <fstream>
-#include <backward/strstream>
+#include <sstream>
 #include <string.h>
 #include <ctype.h>
 
@@ -349,11 +349,9 @@ int
 CmdParseCommand::parse_declarations(const char * str)
 {
    int  rc = 0;
-   char * strbuf = new char[::strlen(str) + 1] ;
-   (void) ::strcpy(strbuf, str);
-   istrstream  iss(strbuf);
+   std::string    istr(str);
+   istringstream  iss(istr);
    rc = parse_declarations(iss);
-   delete  strbuf ;
    return  rc ;
 }
 

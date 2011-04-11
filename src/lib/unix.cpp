@@ -22,7 +22,7 @@
 //-^^---------------------------------------------------------------------
 
 #include <iostream>
-#include <backward/strstream>
+#include <sstream>
 
 #include <stdlib.h>
 #include <string.h>
@@ -703,8 +703,10 @@ CmdLine::fmt_arg(const CmdArg           * cmdarg,
                  CmdLine::CmdLineSyntax   syntax,
                  CmdLine::CmdUsageLevel   level) const
 {
-   ostrstream  oss(buf, bufsize);
-   *buf = '\0';
+   ostringstream oss;
+
+   buf[0]         = '\0';
+   buf[bufsize-1] = '\0';
 
    int  plus = (cmd_flags & ALLOW_PLUS) ;  // Can we use "+"?
    char optchar = cmdarg->char_name();
@@ -759,7 +761,8 @@ CmdLine::fmt_arg(const CmdArg           * cmdarg,
          oss << char(']') ;
       }
       oss << ends ;
-      return  (oss.pcount() - 1);
+      strncpy(buf, oss.str().c_str(), bufsize);
+      return  oss.str().length();
    }
 
    if (! (cmdarg->syntax() & CmdArg::isPOS)) {
@@ -816,7 +819,7 @@ CmdLine::fmt_arg(const CmdArg           * cmdarg,
       oss << char(']') ;
    }
    oss << ends ;
-
-   return  (oss.pcount() - 1) ;
+   strncpy(buf, oss.str().c_str(), bufsize);
+   return  oss.str().length();
 }
 
